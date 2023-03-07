@@ -1,0 +1,76 @@
+{% extends 'Core/Dashboard.html' %}
+
+{% block title %} Orders {% endblock %}
+
+{% block content %}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+
+        <div class="row">
+        
+            <h4 class="card-title text-warning">Orders ({{usercount}})</h4>
+ 
+            <form action="" method="get">
+                <input type="text" class="form-control text-white mb-3" style="width:250px ; display: inline;" placeholder="Search"
+                name="key">
+                <button style="height:38px ;" class="btn btn-primary pl-3" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr class="table-dark text-center h5">
+                    <td>#</td>
+                    <td>Image</td>
+                    <td>Category</td>
+                    <td>Status</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+                <tbody>
+                  <tr class="table-dark text-center">
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>
+                        {% if i.is_active == True %}
+                        <a href="" class="btn btn-outline-success py-2">Active</a>                             
+                        {% else %}
+                        <a href="" class="btn btn-outline-danger py-2">Suspended</a>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-danger py-1 pr-1 pl-2 border border-none bg-none" data-toggle="modal" data-target="#exampleModal{{i.id}}">
+                            <i class="fa-solid fa-trash"></i>
+                          </button>
+                    </td>
+
+                    <div class="modal fade" id="exampleModal{{i.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
+                              <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              Are you sure you want to delete user {{i.first_name}}?
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <a href="" type="button" class="btn btn-danger">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                  </tr>
+                </tbody>
+        </table>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'auth/Login.html' %}
+{% load static %}
+
+{% block title %} SignUp {% endblock %}
+
+{% block content %}
+
+<section class="mt-5 mb-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="wrap d-md-flex">
+                    <div class="img img-fluid" style="background-image: url('{% static 'Frontend/auth/images/bg-1.jpg' %}');">
+                    </div>
+                    <div class="login-wrap p-4 p-md-5">
+                  <div class="d-flex">
+                      <div class="w-100">
+                          <h3 class="mb-4">Sign Up</h3>
+                      </div>
+                            
+                    </div>
+                        <form method="post" class="signin-form">
+                            {% csrf_token %}
+
+                            {% for message in messages %}
+                            <div class="alert-danger rounded mb-2 text-center" role="alert">
+                                 {{message}}
+                             </div>
+                             {% endfor %}
+                            <div class="row">
+                                <input type="text" class="form-control col-md-5  mb-3" name="first_name" placeholder="First Name" required>
+                                <h class="col-md-1"></h>
+                                <input type="text" class="form-control col-md-5  mb-3" name="last_name" placeholder="Last Name" required>
+                            </div>
+                            <div class="row mb-3">
+                                <input type="text" class="form-control col-md-11" name="email" placeholder="Email" required>
+                            </div>
+                            <div class="row mb-3">
+                                <input type="tel" class="form-control col-md-11" name="phone_number" minlength="10" maxlength="14" placeholder="Mobile" required>
+                            </div>
+                            <div class="row mb-3">
+                                <input type="password" class="form-control col-md-11" name="password" minlength="8" placeholder="Password" required>
+                            </div>
+                            <div class="row mb-3">
+                                <input type="password" class="form-control col-md-11" name="password2" minlength="8" placeholder="Confirm Password" required>
+                            </div>
+                            <div class="row mb-1">
+                            <button type="submit" class="form-control col-md-11 btn btn-primary rounded submit px-3">Sign Up</button>
+                            </div>
+              </form>
+              <p class="text-center">Already a member?  <a href="{% url 'UserLogin' %}">Login</a></p>
+            </div>
+          </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

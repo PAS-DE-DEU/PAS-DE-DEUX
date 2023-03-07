@@ -1,0 +1,94 @@
+ {% extends 'shop/home.html' %}
+ load static 
+
+ {% block title %}  Orders  {% endblock %} 
+
+ {% block content %}
+
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>My Orders</h4>
+                    <div class="breadcrumb__links">
+                        <a href="">Home</a>
+                        <span>Orders</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="py-5 ml-3">
+    <div class="container">
+        
+        <div class="row">
+             <!-- for i in orders  -->
+            <div class="col-md-12 mb-3">
+                <div class="card shadow mb-1"  style="box-shadow: 1px 1px 1px 2px #f2f2f2;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                 <!-- for items in i.orderelate.all  -->
+                                <a class="text-dark" href=" url 'productDetail' items.product.product_name.category_name.slug items.product.product_name.slug ">
+                                <img width="50px" src="" class="mt-1">
+                                
+                                    <span class="text-dark ml-1">{{items.product.product_name}}</span><small> (x{{items.quantity}})</small><br>
+                                </a>
+                                 <!-- endfor   -->
+                            </div>
+
+                            <div class="col-md-4 col-sm-12">
+                                <span style="font-size:16px ;" class="text-dark">Ordered to:</span><br>
+                                {{i.name}} | {{i.phone}}<br>
+                                <span style="font-size:16px ;" class="text-dark">Total price:
+                                    &nbsp;</span><span
+                                    style="color:black ; font-weight:500 ; font-size: 18px;">₹{{i.total_price}}</span>
+                                <br>
+
+                                <span style="font-size:16px ;" class="text-dark">Ordered status:</span>
+                                 <!-- if i.status == "Order cancelled" or i.status == "Returned" 
+                                <span class="text-danger" style="font-size:16px ;">{{i.status}}</span>
+                                 elif i.status == "Completed" 
+                                <span style="color:green; font-size:16px ;">Delivered</span>
+                                 else 
+                                <span style="font-size:16px;color: #0090e7;">{{i.status}}</span>
+                                 endif  -->
+                                    <br>
+                                <a href="" style="font-size:18px; color:brown ; cursor: pointer;"> Invoice</a>
+                            </div>
+
+
+
+                            <div class="col-md-2 col-sm-12 d-flex align-items-center">
+                                 
+                                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal{{i.id}}" data-whatever="@fat">
+                                    Return
+                                </button>
+                                 <!-- else  -->
+                                <!-- <button type="button" class="btn btn-sm btn-warning mb-2" data-toggle="modal"
+                                    data-target="#cancel{{i.id}}">
+                                    Cancel order
+                                </button> -->
+
+                                 <!-- endif  -->
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!-- endfor  -->
+
+          
+
+    </div>
+</div>
+</div>
+
+
+ {% endblock %}
